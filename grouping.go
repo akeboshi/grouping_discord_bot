@@ -14,8 +14,8 @@ import (
 )
 
 type BotConfig struct {
-	Token          string
-	ShuffleTrigger string "shuffle_trigger"
+	Token           string
+	GroupingTrigger string "grouping_trigger"
 }
 
 var config BotConfig
@@ -60,7 +60,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if m.Content == config.ShuffleTrigger {
+	if m.Content == config.GroupingTrigger {
 		channel, _ := s.State.Channel(m.ChannelID)
 		guild, _ := s.State.Guild(channel.GuildID)
 
